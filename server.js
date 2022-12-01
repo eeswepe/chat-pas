@@ -14,13 +14,15 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
   res.render('index');
 });
-
+app.get('/rfs', (req,res) => {
+    res.render('rfs')
+})
 io.on('connection', (socket) => {
   socket.on('message', (data) => {
     socket.broadcast.emit('message', data);
   });
 });
 
-server.listen(8000, () => {
+server.listen(1302, () => {
   console.log('server connected');
 });
