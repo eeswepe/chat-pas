@@ -3,10 +3,13 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require('socket.io');
+const pdfjs = require('pdfjs');
 const io = new Server(server);
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
+
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
   res.render('index');
